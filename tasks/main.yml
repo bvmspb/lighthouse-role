@@ -1,0 +1,16 @@
+---
+# tasks file for lighthouse-role
+- name: Lighthouse - get from git
+  ansible.builtin.git:
+    repo: "{{ lighthouse_vcs }}"
+    version: master
+    dest: "{{ lighthouse_location_dir }}"
+- name: Lighthouse - create config file
+  become: true
+  ansible.builtin.template:
+    src: templates/lighthouse.conf.j2
+    dest: /etc/nginx/sites-available/default
+    mode: "a+r,u+rw,g+rw"
+  notify: reload-nginx
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
