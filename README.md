@@ -1,4 +1,4 @@
-vector-role
+lighthouse-role
 =========
 
 Роль, создана из Playbook для задания 08.03 Roles - были вынесены tasks, vars, templates и handlers. Является частью работы над разделом по изучению Ansible.  
